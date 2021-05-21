@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on re:current_analytics</title>
+    <link>https://recurrentanalytics.com/categories/r/</link>
+    <description>Recent content in R on re:current_analytics</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://recurrentanalytics.com/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>UN Voting Analysis</title>
+      <link>https://recurrentanalytics.com/post/2021/05/21/un-voting-analysis/</link>
+      <pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://recurrentanalytics.com/post/2021/05/21/un-voting-analysis/</guid>
+      <description>TidyTuesdayJoin the R4DS Online Learning Community in the weekly #TidyTuesday event!Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
+While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>https://recurrentanalytics.com/post/2020/12/01/hello-r-markdown/</link>
+      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://recurrentanalytics.com/post/2020/12/01/hello-r-markdown/</guid>
+      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
+    </item>
+    
+  </channel>
+</rss>

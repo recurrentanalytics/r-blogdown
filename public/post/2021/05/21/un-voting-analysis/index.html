@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>UN Voting Analysis | re:current_analytics</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/fonts.css" />
+    
+  </head>
+
+  <body>
+    <nav>
+    <ul class="menu">
+      
+      <li><a href="/">Home</a></li>
+      
+      <li><a href="/about/">About</a></li>
+      
+      <li><a href="/categories/">Categories</a></li>
+      
+      <li><a href="/tags/">Tags</a></li>
+      
+    </ul>
+    <hr/>
+    </nav>
+
+<div class="article-meta">
+<h1><span class="title">UN Voting Analysis</span></h1>
+<h2 class="author">Timm Walker</h2>
+<h2 class="date">2021/05/21</h2>
+</div>
+
+<main>
+
+<script src="https://recurrentanalytics.com/post/2021/05/21/un-voting-analysis/index_files/header-attrs/header-attrs.js"></script>
+
+
+<div id="tidytuesday" class="section level1">
+<h1>TidyTuesday</h1>
+<p>Join the R4DS Online Learning Community in the weekly #TidyTuesday event!
+Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.</p>
+<p>While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.
+The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!</p>
+<p>As such we encourage everyone of all skills to participate!</p>
+<pre class="r"><code>library(tidyverse)
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+## v ggplot2 3.3.3     v purrr   0.3.4
+## v tibble  3.1.1     v dplyr   1.0.5
+## v tidyr   1.1.3     v stringr 1.4.0
+## v readr   1.4.0     v forcats 0.5.1
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+library(tidytuesdayR)
+library(scales)
+## 
+## Attaching package: &#39;scales&#39;
+## The following object is masked from &#39;package:purrr&#39;:
+## 
+##     discard
+## The following object is masked from &#39;package:readr&#39;:
+## 
+##     col_factor
+library(lubridate)
+## 
+## Attaching package: &#39;lubridate&#39;
+## The following objects are masked from &#39;package:base&#39;:
+## 
+##     date, intersect, setdiff, union
+library(ggthemes)
+library(fuzzyjoin)
+
+theme_set(theme_light())</code></pre>
+</div>
+<div id="load-the-weekly-data" class="section level1">
+<h1>Load the weekly Data</h1>
+<p>Download the weekly data and make available in the <code>tt</code> object.</p>
+<pre class="r"><code>
+nvotes &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-23/unvotes.csv&#39;)
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   rcid = col_double(),
+##   country = col_character(),
+##   country_code = col_character(),
+##   vote = col_character()
+## )
+roll_calls &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-23/roll_calls.csv&#39;)
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   rcid = col_double(),
+##   session = col_double(),
+##   importantvote = col_double(),
+##   date = col_date(format = &quot;&quot;),
+##   unres = col_character(),
+##   amend = col_double(),
+##   para = col_double(),
+##   short = col_character(),
+##   descr = col_character()
+## )
+issues &lt;- readr::read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-23/issues.csv&#39;)
+## 
+## -- Column specification --------------------------------------------------------
+## cols(
+##   rcid = col_double(),
+##   short_name = col_character(),
+##   issue = col_character()
+## )</code></pre>
+</div>
+
+</main>
+
+  <footer>
+  <script src="//yihui.org/js/math-code.js"></script>
+<script async src="//mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<script async src="//yihui.org/js/center-img.js"></script>
+
+  
+  <hr/>
+  © <a href="https://recurrentanalytics.com">Timm Walker</a> 2021 &ndash;  | <a href="https://github.com/recurrentanalytics">Github</a> | <a href="https://twitter.com/timm_walker">Twitter</a>
+  
+  </footer>
+  </body>
+</html>
+
