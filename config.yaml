@@ -1,4 +1,4 @@
-baseurl: "https://www.recurrentanalytics.com"
+baseurl: "https://recurrentanalytics.netlify.app/"
 languageCode: "en-us"
 title: "re:current_analytics"
 theme: "hugo-xmin"
