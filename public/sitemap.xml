@@ -2,69 +2,71 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://recurrentanalytics.com/note/2021/05/21/a-test/</loc>
+    <loc>https://recurrentanalytics.netlify.app/note/2021/05/21/a-test/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/blogdown/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/blogdown/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/categories/</loc>
+    <loc>https://recurrentanalytics.netlify.app/categories/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/categories/example/</loc>
+    <loc>https://recurrentanalytics.netlify.app/categories/example/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/</loc>
+    <loc>https://recurrentanalytics.netlify.app/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/categories/hugo/</loc>
+    <loc>https://recurrentanalytics.netlify.app/categories/hugo/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/note/</loc>
+    <loc>https://recurrentanalytics.netlify.app/note/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/pandoc/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/pandoc/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/plot/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/plot/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/post/</loc>
+    <loc>https://recurrentanalytics.netlify.app/post/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/categories/r/</loc>
+    <loc>https://recurrentanalytics.netlify.app/categories/r/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/r-markdown/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/r-markdown/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/regression/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/regression/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/rstudio/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/rstudio/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/post/2021/05/21/un-voting-analysis/</loc>
+    <loc>https://recurrentanalytics.netlify.app/post/2021/05/21/un-voting-analysis/</loc>
     <lastmod>2021-05-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/post/2021/02/14/a-plain-markdown-post/</loc>
+    <loc>https://recurrentanalytics.netlify.app/post/2021/02/14/a-plain-markdown-post/</loc>
     <lastmod>2021-02-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/markdown/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/markdown/</loc>
     <lastmod>2021-02-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/tags/mathjax/</loc>
+    <loc>https://recurrentanalytics.netlify.app/tags/mathjax/</loc>
     <lastmod>2021-02-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/post/2020/12/01/hello-r-markdown/</loc>
+    <loc>https://recurrentanalytics.netlify.app/post/2020/12/01/hello-r-markdown/</loc>
     <lastmod>2020-12-01T21:13:14-05:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/post/2020/07/23/lorem-ipsum/</loc>
+    <loc>https://recurrentanalytics.netlify.app/post/2020/07/23/lorem-ipsum/</loc>
     <lastmod>2020-07-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://recurrentanalytics.com/about/</loc>
+    <loc>https://recurrentanalytics.netlify.app/about/</loc>
+  </url><url>
+    <loc>https://recurrentanalytics.netlify.app/imprint/</loc>
   </url>
 </urlset>

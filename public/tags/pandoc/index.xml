@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pandoc on re:current_analytics</title>
-    <link>https://recurrentanalytics.com/tags/pandoc/</link>
+    <link>https://recurrentanalytics.netlify.app/tags/pandoc/</link>
     <description>Recent content in Pandoc on re:current_analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://recurrentanalytics.com/tags/pandoc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://recurrentanalytics.netlify.app/tags/pandoc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A Test!</title>
-      <link>https://recurrentanalytics.com/note/2021/05/21/a-test/</link>
+      <link>https://recurrentanalytics.netlify.app/note/2021/05/21/a-test/</link>
       <pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://recurrentanalytics.com/note/2021/05/21/a-test/</guid>
+      <guid>https://recurrentanalytics.netlify.app/note/2021/05/21/a-test/</guid>
       <description>Hi! </description>
     </item>
     
     <item>
       <title>A Plain Markdown Post</title>
-      <link>https://recurrentanalytics.com/post/2021/02/14/a-plain-markdown-post/</link>
+      <link>https://recurrentanalytics.netlify.app/post/2021/02/14/a-plain-markdown-post/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://recurrentanalytics.com/post/2021/02/14/a-plain-markdown-post/</guid>
+      <guid>https://recurrentanalytics.netlify.app/post/2021/02/14/a-plain-markdown-post/</guid>
       <description>This sample post is mainly for blogdown users. If you do not use blogdown, you can skip the first section.
  Write an R package. Write a book. &amp;hellip; Profit!  Similarly, Blackfriday does not support LaTeX math and Pandoc does. I have added the MathJax support to this theme (hugo-xmin) but there is a caveat for plain Markdown posts: you have to include math expressions in a pair of backticks (inline: `$ $`; display style: `$$ $$`), e.</description>
     </item>
