@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>R on re:current_analytics</title>
-    <link>https://recurrentanalytics.netlify.app/categories/r/</link>
-    <description>Recent content in R on re:current_analytics</description>
+    <title>dataviz on re:current_analytics</title>
+    <link>https://recurrentanalytics.netlify.app/tags/dataviz/</link>
+    <description>Recent content in dataviz on re:current_analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://recurrentanalytics.netlify.app/categories/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://recurrentanalytics.netlify.app/tags/dataviz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Eurovision Song Contest (ESC): First Analyses</title>
       <link>https://recurrentanalytics.netlify.app/post/2021/05/23/eurovision-song-contest-esc-first-analyses/</link>
@@ -14,27 +14,6 @@
       
       <guid>https://recurrentanalytics.netlify.app/post/2021/05/23/eurovision-song-contest-esc-first-analyses/</guid>
       <description>readxl::excel_sheets(&amp;quot;eurovision_song_contest_1975_2019.xlsx&amp;quot;)## [1] &amp;quot;Data&amp;quot; &amp;quot;Remarks&amp;quot; &amp;quot;Sources&amp;quot;eurovision_raw &amp;lt;- readxl::read_excel(path = &amp;quot;eurovision_song_contest_1975_2019.xlsx&amp;quot;,sheet = &amp;quot;Data&amp;quot;)eurovision_proc &amp;lt;- eurovision_raw %&amp;gt;%janitor::clean_names() %&amp;gt;%filter(is.na(duplicate)) %&amp;gt;%select(-duplicate) %&amp;gt;%rename(show = semi_final,vote_type = jury_or_televoting) %&amp;gt;%mutate_at(vars(from_country), ~str_replace(., &amp;quot;The Netherands&amp;quot;, &amp;quot;The Netherlands&amp;quot;)) %&amp;gt;%mutate(show_type = as_factor(if_else(show == &amp;quot;f&amp;quot;, &amp;quot;final&amp;quot;, &amp;quot;semi-final&amp;quot;)),show = fct_recode(show,&amp;quot;final&amp;quot; = &amp;quot;f&amp;quot;,&amp;quot;single-semi&amp;quot; = &amp;quot;sf&amp;quot;,&amp;quot;semi-one&amp;quot; = &amp;quot;sf1&amp;quot;,&amp;quot;semi-two&amp;quot; = &amp;quot;sf2&amp;quot;),vote_type = fct_recode(vote_type,&amp;quot;jury&amp;quot; = &amp;quot;J&amp;quot;,&amp;quot;televote&amp;quot; = &amp;quot;T&amp;quot;))eurovision_country_code &amp;lt;- function(x) {code &amp;lt;- case_when(x == &amp;quot;Serbia &amp;amp; Montenegro&amp;quot; ~ &amp;quot;SCG&amp;quot;,x == &amp;quot;Yugoslavia&amp;quot; ~ &amp;quot;YUG&amp;quot;,TRUE ~ countrycode::countrycode(x, &amp;quot;country.</description>
-    </item>
-    
-    <item>
-      <title>UN Voting Analysis</title>
-      <link>https://recurrentanalytics.netlify.app/post/2021/05/21/un-voting-analysis/</link>
-      <pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://recurrentanalytics.netlify.app/post/2021/05/21/un-voting-analysis/</guid>
-      <description>TidyTuesdayJoin the R4DS Online Learning Community in the weekly #TidyTuesday event!Every week we post a raw dataset, a chart or article related to that dataset, and ask you to explore the data.
-While the dataset will be “tamed”, it will not always be tidy! As such you might need to apply various R for Data Science techniques to wrangle the data into a true tidy format.The goal of TidyTuesday is to apply your R skills, get feedback, explore other’s work, and connect with the greater #RStats community!</description>
-    </item>
-    
-    <item>
-      <title>Hello R Markdown</title>
-      <link>https://recurrentanalytics.netlify.app/post/2020/12/01/hello-r-markdown/</link>
-      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
-      
-      <guid>https://recurrentanalytics.netlify.app/post/2020/12/01/hello-r-markdown/</guid>
-      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
-You can embed an R code chunk like this:
-summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
     </item>
     
   </channel>

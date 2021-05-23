@@ -1,0 +1,157 @@
+---
+title: "Eurovision Song Contest (ESC): First Analyses"
+author: "Timm Walker"
+date: "2021-05-23"
+categories: ["R"]
+tags: ["dataviz", "ggplot", "gganimate"]
+editor_options: 
+  chunk_output_type: inline
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<pre class="r"><code>readxl::excel_sheets(&quot;eurovision_song_contest_1975_2019.xlsx&quot;)</code></pre>
+<pre><code>## [1] &quot;Data&quot;    &quot;Remarks&quot; &quot;Sources&quot;</code></pre>
+<pre class="r"><code>eurovision_raw &lt;- readxl::read_excel(
+  path = &quot;eurovision_song_contest_1975_2019.xlsx&quot;,
+  sheet = &quot;Data&quot;
+)</code></pre>
+<pre class="r"><code>eurovision_proc &lt;- eurovision_raw %&gt;%
+  janitor::clean_names() %&gt;%
+  filter(is.na(duplicate)) %&gt;%
+  select(-duplicate) %&gt;%
+  rename(show = semi_final,
+         vote_type = jury_or_televoting) %&gt;%
+  mutate_at(vars(from_country), ~str_replace(., &quot;The Netherands&quot;, &quot;The Netherlands&quot;)) %&gt;%
+  mutate(
+    show_type = as_factor(if_else(show == &quot;f&quot;, &quot;final&quot;, &quot;semi-final&quot;)),
+    show = fct_recode(show,
+                      &quot;final&quot; = &quot;f&quot;,
+                      &quot;single-semi&quot; = &quot;sf&quot;,
+                      &quot;semi-one&quot; = &quot;sf1&quot;,
+                      &quot;semi-two&quot; = &quot;sf2&quot;),
+    vote_type = fct_recode(vote_type,
+                           &quot;jury&quot; = &quot;J&quot;,
+                           &quot;televote&quot; = &quot;T&quot;))</code></pre>
+<pre class="r"><code>eurovision_country_code &lt;- function(x) {
+  
+  code &lt;- case_when(
+    x == &quot;Serbia &amp; Montenegro&quot; ~ &quot;SCG&quot;,
+    x == &quot;Yugoslavia&quot; ~ &quot;YUG&quot;,
+    TRUE ~ countrycode::countrycode(x, &quot;country.name&quot;, &quot;iso3c&quot;)
+  )
+  
+  return(code)
+  
+}</code></pre>
+<pre class="r"><code>eurovision_dt &lt;- eurovision_proc %&gt;%
+  mutate_at(vars(from_country, to_country), eurovision_country_code)</code></pre>
+<pre><code>## Warning in countrycode::countrycode(x, &quot;country.name&quot;, &quot;iso3c&quot;): Some values were not matched unambiguously: Serbia &amp; Montenegro, Yugoslavia
+
+## Warning in countrycode::countrycode(x, &quot;country.name&quot;, &quot;iso3c&quot;): Some values were not matched unambiguously: Serbia &amp; Montenegro, Yugoslavia</code></pre>
+<pre class="r"><code>calc_scores &lt;- function(data) {
+  
+  scores &lt;- data %&gt;%
+    group_by(to_country) %&gt;%
+    summarise(score = sum(points)) %&gt;%
+    ungroup()
+  
+  return(scores)
+  
+}
+
+get_winner &lt;- function(data) {
+  
+  winner &lt;- data %&gt;%
+    filter(score == max(score)) %&gt;%
+    rename(winning_country = to_country, winning_score = score)
+  
+  return(winner)
+  
+}</code></pre>
+<pre class="r"><code>eurovision_scores &lt;- eurovision_dt %&gt;% 
+  group_by(year, show) %&gt;%
+  nest(data = c(vote_type, from_country, to_country, points)) %&gt;%
+  mutate(
+    scores = map(data, calc_scores),
+    winner = map(scores, get_winner)) %&gt;%
+  select(-data) %&gt;%
+  unnest(winner) %&gt;%
+  unnest(scores) %&gt;%
+  mutate(
+    overall_winner = winning_country == to_country,
+    outcome = case_when(
+      overall_winner &amp; show_type == &quot;final&quot; ~ &quot;win-final&quot;,
+      overall_winner &amp; show_type == &quot;semi-final&quot; ~ &quot;win-semi&quot;,
+      TRUE ~ &quot;no-win&quot;
+    )) %&gt;%
+  rename(country = to_country) %&gt;%
+  group_by(country) %&gt;% 
+  mutate(prev_wins = cumsum(overall_winner)) %&gt;%
+  ungroup() %&gt;%
+  mutate(prev_wins = if_else(prev_wins &gt; 0, prev_wins - 1, 0))</code></pre>
+<pre class="r"><code>deu_scores &lt;- eurovision_scores %&gt;%
+  filter(country == &quot;DEU&quot;) %&gt;%
+  filter(!(year == 1991 &amp; winning_country == &quot;FRA&quot;)) %&gt;%
+  select(year, DEU = score, Winner = winning_score) %&gt;%
+  pivot_longer(cols = -year, names_to = &quot;country&quot;, values_to = &quot;score&quot;)</code></pre>
+<pre class="r"><code>p_line &lt;- ggplot(deu_scores, aes(x = year, y = score, colour = country)) +
+  geom_line() +
+  geom_point() +
+  labs(title = &quot;DEU and winning country&#39;s Eurovision scores 1975-2019&quot;,
+       x = &quot;Year&quot;,
+       y = &quot;Score&quot;) +
+  scale_colour_manual(values = c(&quot;Winner&quot; = &quot;goldenrod2&quot;, &quot;DEU&quot; = &quot;dodgerblue3&quot;)) +
+  theme(plot.title = element_text(lineheight = 1.1), legend.title = element_blank(), legend.position = &quot;bottom&quot;)</code></pre>
+<pre class="r"><code>library(gganimate)
+
+anim_line &lt;- p_line +
+  transition_reveal(year)
+
+options(gganimate.dev_args = list(width = 900, height = 900*9/16))
+anim_save(&quot;eurovision_deu_winner.gif&quot;, anim_line, fps = 5)</code></pre>
+<pre class="r"><code>world_countries &lt;- rnaturalearth::ne_countries(returnclass = &quot;sf&quot;)
+
+world_cropped &lt;- sf::st_crop(world_countries, xmin = -30, xmax = 155, ymin = -90, ymax = 90)</code></pre>
+<pre><code>## although coordinates are longitude/latitude, st_intersection assumes that they are planar</code></pre>
+<pre><code>## Warning: attribute variables are assumed to be spatially constant throughout all
+## geometries</code></pre>
+<pre class="r"><code>eurovision_countries &lt;- world_cropped %&gt;%
+  filter(iso_a3 %in% unique(eurovision_scores$country)) %&gt;%
+  left_join(eurovision_scores, by = c(&quot;iso_a3&quot; = &quot;country&quot;)) %&gt;%
+  mutate(relative_score = score/winning_score)</code></pre>
+<pre class="r"><code>p_map1 &lt;- ggplot(eurovision_countries %&gt;% filter(year == 2019)) +
+  geom_sf(aes(fill = relative_score), size = 0.1, colour = &quot;grey90&quot;) +
+  scale_fill_gradient(low = &quot;dodgerblue3&quot;, high = &quot;goldenrod2&quot;,
+                      guide = guide_none()) +
+  labs(
+    title = &quot;Relative scores in the Eurovision Finals: 2019&quot;,
+    subtitle = &quot;Relative score = country score / winning score&quot;
+  ) +
+  theme(
+    axis.text = element_blank()
+  )</code></pre>
+<pre class="r"><code>p_map2 &lt;- ggplot(eurovision_countries) +
+  geom_sf(aes(fill = relative_score), size = 0.1, colour = &quot;grey90&quot;) +
+  scale_fill_gradient(low = &quot;dodgerblue3&quot;, high = &quot;goldenrod2&quot;, 
+                      guide = guide_none()) +
+  labs(
+    title = &quot;Relative scores in the Eurovision Finals: {closest_state}&quot;,
+    subtitle = &quot;Relative score = country score / winning score&quot;
+  ) +
+  theme(
+    axis.text = element_blank()
+  )
+
+anim_map &lt;- p_map2 +
+  transition_states(year) +
+  theme(
+    plot.title = element_text(size = 16),
+    axis.title = element_text(size = 14),
+    axis.text = element_text(size = 12),
+    legend.text = element_text(size = 12)
+  )
+
+options(gganimate.dev_args = list(width = 750, height = 610))
+anim_save(&quot;eurovision_timeseries&quot;, anim_map, fps = 5)</code></pre>

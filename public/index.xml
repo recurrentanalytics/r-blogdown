@@ -6,7 +6,16 @@
     <description>Recent content in Home on re:current_analytics</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://recurrentanalytics.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 23 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://recurrentanalytics.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Eurovision Song Contest (ESC): First Analyses</title>
+      <link>https://recurrentanalytics.netlify.app/post/2021/05/23/eurovision-song-contest-esc-first-analyses/</link>
+      <pubDate>Sun, 23 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://recurrentanalytics.netlify.app/post/2021/05/23/eurovision-song-contest-esc-first-analyses/</guid>
+      <description>readxl::excel_sheets(&amp;quot;eurovision_song_contest_1975_2019.xlsx&amp;quot;)## [1] &amp;quot;Data&amp;quot; &amp;quot;Remarks&amp;quot; &amp;quot;Sources&amp;quot;eurovision_raw &amp;lt;- readxl::read_excel(path = &amp;quot;eurovision_song_contest_1975_2019.xlsx&amp;quot;,sheet = &amp;quot;Data&amp;quot;)eurovision_proc &amp;lt;- eurovision_raw %&amp;gt;%janitor::clean_names() %&amp;gt;%filter(is.na(duplicate)) %&amp;gt;%select(-duplicate) %&amp;gt;%rename(show = semi_final,vote_type = jury_or_televoting) %&amp;gt;%mutate_at(vars(from_country), ~str_replace(., &amp;quot;The Netherands&amp;quot;, &amp;quot;The Netherlands&amp;quot;)) %&amp;gt;%mutate(show_type = as_factor(if_else(show == &amp;quot;f&amp;quot;, &amp;quot;final&amp;quot;, &amp;quot;semi-final&amp;quot;)),show = fct_recode(show,&amp;quot;final&amp;quot; = &amp;quot;f&amp;quot;,&amp;quot;single-semi&amp;quot; = &amp;quot;sf&amp;quot;,&amp;quot;semi-one&amp;quot; = &amp;quot;sf1&amp;quot;,&amp;quot;semi-two&amp;quot; = &amp;quot;sf2&amp;quot;),vote_type = fct_recode(vote_type,&amp;quot;jury&amp;quot; = &amp;quot;J&amp;quot;,&amp;quot;televote&amp;quot; = &amp;quot;T&amp;quot;))eurovision_country_code &amp;lt;- function(x) {code &amp;lt;- case_when(x == &amp;quot;Serbia &amp;amp; Montenegro&amp;quot; ~ &amp;quot;SCG&amp;quot;,x == &amp;quot;Yugoslavia&amp;quot; ~ &amp;quot;YUG&amp;quot;,TRUE ~ countrycode::countrycode(x, &amp;quot;country.</description>
+    </item>
+    
     <item>
       <title>A Test!</title>
       <link>https://recurrentanalytics.netlify.app/note/2021/05/21/a-test/</link>
