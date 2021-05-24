@@ -5,7 +5,7 @@ date: "2021-05-23"
 categories: ["R"]
 tags: ["dataviz", "ggplot", "gganimate"]
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 <script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
@@ -13,10 +13,7 @@ editor_options:
 
 <pre class="r"><code>readxl::excel_sheets(&quot;eurovision_song_contest_1975_2019.xlsx&quot;)</code></pre>
 <pre><code>## [1] &quot;Data&quot;    &quot;Remarks&quot; &quot;Sources&quot;</code></pre>
-<pre class="r"><code>eurovision_raw &lt;- readxl::read_excel(
-  path = &quot;eurovision_song_contest_1975_2019.xlsx&quot;,
-  sheet = &quot;Data&quot;
-)</code></pre>
+<pre class="r"><code>eurovision_raw &lt;- readxl::read_excel(&quot;eurovision_song_contest_1975_2019.xlsx&quot;, sheet = &quot;Data&quot;)</code></pre>
 <pre class="r"><code>eurovision_proc &lt;- eurovision_raw %&gt;%
   janitor::clean_names() %&gt;%
   filter(is.na(duplicate)) %&gt;%
@@ -103,14 +100,20 @@ get_winner &lt;- function(data) {
        x = &quot;Year&quot;,
        y = &quot;Score&quot;) +
   scale_colour_manual(values = c(&quot;Winner&quot; = &quot;goldenrod2&quot;, &quot;DEU&quot; = &quot;dodgerblue3&quot;)) +
-  theme(plot.title = element_text(lineheight = 1.1), legend.title = element_blank(), legend.position = &quot;bottom&quot;)</code></pre>
+  theme(plot.title = element_text(lineheight = 1.1), legend.title = element_blank(), legend.position = &quot;bottom&quot;)
+
+p_line</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code>library(gganimate)
 
 anim_line &lt;- p_line +
   transition_reveal(year)
 
 options(gganimate.dev_args = list(width = 900, height = 900*9/16))
-anim_save(&quot;eurovision_deu_winner.gif&quot;, anim_line, fps = 5)</code></pre>
+anim_save(&quot;eurovision_deu_winner.gif&quot;, anim_line, fps = 5)
+
+anim_line</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-9-1.gif" /><!-- --></p>
 <pre class="r"><code>world_countries &lt;- rnaturalearth::ne_countries(returnclass = &quot;sf&quot;)
 
 world_cropped &lt;- sf::st_crop(world_countries, xmin = -30, xmax = 155, ymin = -90, ymax = 90)</code></pre>
@@ -131,7 +134,10 @@ world_cropped &lt;- sf::st_crop(world_countries, xmin = -30, xmax = 155, ymin = 
   ) +
   theme(
     axis.text = element_blank()
-  )</code></pre>
+  )
+
+p_map1</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
 <pre class="r"><code>p_map2 &lt;- ggplot(eurovision_countries) +
   geom_sf(aes(fill = relative_score), size = 0.1, colour = &quot;grey90&quot;) +
   scale_fill_gradient(low = &quot;dodgerblue3&quot;, high = &quot;goldenrod2&quot;, 
@@ -154,4 +160,9 @@ anim_map &lt;- p_map2 +
   )
 
 options(gganimate.dev_args = list(width = 750, height = 610))
-anim_save(&quot;eurovision_timeseries&quot;, anim_map, fps = 5)</code></pre>
+anim_save(&quot;eurovision_timeseries&quot;, anim_map, fps = 5)
+
+p_map2</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<pre class="r"><code>anim_map</code></pre>
+<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-12-1.gif" /><!-- --></p>

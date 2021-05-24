@@ -5,7 +5,7 @@ date: "2021-05-23"
 categories: ["R"]
 tags: ["dataviz", "ggplot", "gganimate"]
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -17,10 +17,7 @@ library(tidyverse)
 ```{r}
 readxl::excel_sheets("eurovision_song_contest_1975_2019.xlsx")
 
-eurovision_raw <- readxl::read_excel(
-  path = "eurovision_song_contest_1975_2019.xlsx",
-  sheet = "Data"
-)
+eurovision_raw <- readxl::read_excel("eurovision_song_contest_1975_2019.xlsx", sheet = "Data")
 ```
 
 ```{r}
@@ -133,6 +130,7 @@ p_line <- ggplot(deu_scores, aes(x = year, y = score, colour = country)) +
   scale_colour_manual(values = c("Winner" = "goldenrod2", "DEU" = "dodgerblue3")) +
   theme(plot.title = element_text(lineheight = 1.1), legend.title = element_blank(), legend.position = "bottom")
 
+p_line
 ```
 
 ```{r}
@@ -143,6 +141,8 @@ anim_line <- p_line +
 
 options(gganimate.dev_args = list(width = 900, height = 900*9/16))
 anim_save("eurovision_deu_winner.gif", anim_line, fps = 5)
+
+anim_line
 
 ```
 
@@ -171,6 +171,8 @@ p_map1 <- ggplot(eurovision_countries %>% filter(year == 2019)) +
     axis.text = element_blank()
   )
 
+p_map1
+
 ```
 
 ```{r}
@@ -197,6 +199,9 @@ anim_map <- p_map2 +
 
 options(gganimate.dev_args = list(width = 750, height = 610))
 anim_save("eurovision_timeseries", anim_map, fps = 5)
+
+p_map2
+anim_map
 
 ```
 
